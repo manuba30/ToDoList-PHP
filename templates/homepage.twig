@@ -1,0 +1,17 @@
+{% extends "base.twig" %}
+{% block content %}
+
+<p class = "text-success"> page d'{{title}}</p>
+
+<h2 class = "text-center"> tasks</h2> <br>
+
+
+<ul >
+{% for task in tasks %}
+<div class = "col">
+<li> {{task}}</li>
+</div>
+{% endfor %}
+</ul>
+
+{% endblock %}

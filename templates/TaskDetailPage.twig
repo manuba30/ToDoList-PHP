@@ -1,0 +1,20 @@
+{% extends 'base.twig' %}
+{% block content %}
+	<div class="container py-5">
+        <div class="my-1">
+            <a href="/formation_php/13_restart/public/task/">Retour aux résultats</a>
+        </div>
+		<div class="card">
+			<div class="card-body">
+				<div class="d-flex">
+					<div>{{ task.title }}</div>
+					<div class="px-2">
+						<span class="badge text-bg-warning">{{ task.status}}</span>
+						<span class="badge text-bg-warning">{{ task.responsable}}</span>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

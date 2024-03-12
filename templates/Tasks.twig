@@ -1,0 +1,50 @@
+{% extends 'base.twig' %}
+{% block content %}
+	<div class="container py-5">
+		<div class="d-flex justify-content-between">
+			<form method= "POST">
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" name="wait" id="inlineCheckbox1" value="en attente">
+					<label class="form-check-label" for="inlineCheckbox1">en attente</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" name="progress" id="inlineCheckbox2" value="en cours">
+					<label class="form-check-label" for="inlineCheckbox2">en cours</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" name="finished" id="inlineCheckbox3" value="terminee">
+					<label class="form-check-label" for="inlineCheckbox3">terminée</label>
+				</div>
+				<button class="btn btn-primary" type="submit">valide</button>
+
+			</form>
+			<a href="/formation_php/13_restart/public/task/new" class="btn btn-outline-dark">
+				nouvelle tâche
+			</a>
+		</div>
+		{% for task in tasks %}
+			<div class="card my-2">
+				<div class="card-body">
+					<div class="d-flex justify-content-between">
+						<div>{{ task.title }}</div>
+						<span> {{task.status}} </span>
+						<span> {{task.responsable}} </span>
+
+						<div class="d-flex">
+							<div>
+								<a href="/formation_php/13_restart/public/task/{{task.id}}" class="btn btn-outline-success mx-2">voir</a>
+							</div>
+							<div>
+								<a href="/formation_php/13_restart/public/task/{{task.id}}/update/" class="btn btn-outline-warning mx-2">modifier</a>
+							</div>
+							<div>
+								<a href="/formation_php/13_restart/public/task/{{task.id}}/delete" onclick="confirm('etes vous sur de supprimer cette tache ?')" class="btn btn-outline-danger mx-2">supprimer</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}
