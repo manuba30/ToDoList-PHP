@@ -58,4 +58,11 @@ class TaskRepository
 
         return $tasks;
     }
+    public function search($value){
+        // var_dump($value);
+        require_once "../src/service/config.php";
+        $pdo = new DataBase();
+        $tasks = $pdo->selectAll("SELECT * FROM task WHERE title LIKE '%" .$value . "%' ORDER BY id ");
+        return $tasks;
+    }
 }

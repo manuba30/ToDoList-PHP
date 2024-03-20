@@ -46,6 +46,10 @@ class Router
         if ($url === "/formation_php/13_restart/public/task/") {
             // Instancier le contrôleur et appeler la méthode
             $controller = new TaskController();
+            if($_SERVER['REQUEST_METHOD'] == "POST"){
+                $controller->search();
+                die();
+            }
             $controller->index();
         }
         $parts = explode("/", $url);
@@ -72,5 +76,5 @@ class Router
             $controller = new TaskController();
             $controller->update((int)$parts[5]);
     }
-}
+    }
 }

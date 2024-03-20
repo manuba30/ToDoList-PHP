@@ -12,6 +12,9 @@ class TaskController extends AbstractController
     {
         $taskRepository = new TaskRepository();
         $tasks = $taskRepository->index();
+        if(isset($_POST['search'])){
+            $tasks = $taskRepository ->search($_POST[ 'search' ]);
+        }
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $index=0;
             $condition = "";
@@ -77,5 +80,14 @@ class TaskController extends AbstractController
             'task' => $task,
             'optionList' => ["En attente", "terminée", "En cours"],
         ]);
+    }
+    public function search() {
+        $taskRepository = new TaskRepository();
+        $tasks = $taskRepository->search($_POST['searchBar']);
+        $this->render('Tasks.twig', [
+            'title' => "tasks to do",
+            'tasks' => $tasks,
+        ]);
+        // var_dump($tasks);
     }
 }
